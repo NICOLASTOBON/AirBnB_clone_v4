@@ -4,7 +4,7 @@ $(document).ready(() => {
 
   $('li input[type="checkbox"]').change(function () {
     /* add elements to amenities dictionary */
-    if ($(this).prop('checked')){
+    if ($(this).prop('checked')) {
       amenities[$(this).data('id')] = $(this).data('name');
     } else {
       delete amenities[$(this).data('id')];
@@ -28,30 +28,32 @@ $(document).ready(() => {
   });
 
   $.ajax(
-    { url: 'http://0.0.0.0:5001/api/v1/places_search/',
-      type: "POST",
+    {
+      url: 'http://0.0.0.0:5001/api/v1/places_search/',
+      type: 'POST',
       data: JSON.stringify({}),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
+      contentType: 'application/json; charset=utf-8',
+      dataType: 'json',
       success: displayData
-  })
+    });
 
   $('button').click(() => {
-    $('article').remove()
+    $('article').remove();
     $.ajax(
-      { url: 'http://0.0.0.0:5001/api/v1/places_search/',
-      type: "POST",
-      data: JSON.stringify({amenities: Object.keys(amenities)}),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: displayData
+      {
+        url: 'http://0.0.0.0:5001/api/v1/places_search/',
+        type: 'POST',
+        data: JSON.stringify({ amenities: Object.keys(amenities) }),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: displayData
       }
-    )
+    );
   });
 
   function displayData (data) {
-      data.forEach(place => {
-        $('.places').append(
+    data.forEach(place => {
+      $('.places').append(
           `<article>
             <div class="title_box">
               <h2>${place.name}</h2>
@@ -59,12 +61,12 @@ $(document).ready(() => {
             </div>
             <div class="information">
               <div class="max_guest">${place.max_guest}</div>
-              <div class="number_rooms">${ place.number_rooms }</div>
+              <div class="number_rooms">${place.number_rooms}</div>
               <div class="number_bathrooms">${place.number_bathrooms}</div>
             </div>
             <div>${place.description}</div>
           </article>`
-        )
-      });
-    }
+      );
+    });
+  }
 });

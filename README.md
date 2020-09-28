@@ -295,7 +295,6 @@ Usage:
 
 # Complete schema of Hbnb project
 
-<p align="left"><img src="https://imgur.com/jMw47V1" alt="css3" width="70" height="20"/></p>
 
 In the last part of this project we've use Javascript to make the app dinamyc, using jquery (ajax, fetch) and others.
 The content of the web page is loaded dinamicly now and you can use a great feature.

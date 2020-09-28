@@ -16,3 +16,15 @@ $(document).ready(() => {
   });
   $('li input[type="checkbox"]').css('margin-right', '10px');
 });
+
+$(document).ready(() => {
+  const URL = 'http://0.0.0.0:5001/api/v1/status/';
+  $.get(URL, data => {
+    if (data.status === 'OK') {
+      $('DIV#api_status').addClass('available');
+      $('DIV.available').css('background-color', '#ff545f');
+    } else {
+      $('DIV#api_status').removeClass('available');
+    }
+  });
+});

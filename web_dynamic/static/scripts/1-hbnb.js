@@ -2,7 +2,7 @@ $(document).ready(() => {
   const amenities = {};
   $('li input[type="checkbox"]').change(function () {
     /* add elements to amenities dictionary */
-    if ($(this).prop('checked')){
+    if ($(this).prop('checked')) {
       amenities[$(this).data('id')] = $(this).data('name');
     } else {
       delete amenities[$(this).data('id')];
